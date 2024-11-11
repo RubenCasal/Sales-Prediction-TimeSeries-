@@ -24,7 +24,7 @@ Durante la exploración de datos, se realizaron los siguientes análisis:
 - **Efecto de Eventos y Festividades**: Se investigó la influencia de eventos especiales y festivos en los picos de ventas, identificando variaciones estacionales y patrones de consumo relacionados con estos eventos.
 
 
-### Preparación de Datos para el Entrenamiento (Training Preparation)
+### Training Preparation
 
 Antes de entrenar el modelo, se llevó a cabo una preparación exhaustiva de los datos para construir una serie de covariables que permitan capturar mejor los patrones temporales en las ventas. Este proceso incluye la creación de series de tiempo específicas para las variables de entrada y la definición de pipelines para transformar los datos de forma eficiente. Los pasos clave fueron los siguientes:
 
@@ -44,7 +44,35 @@ Antes de entrenar el modelo, se llevó a cabo una preparación exhaustiva de los
       - **Escalado de Datos**: Se normalizan las series de tiempo con `Scaler` para asegurar que las variables tengan una escala consistente, mejorando la estabilidad y el rendimiento del modelo.
       - **Codificación de Covariables Estáticas**: Las covariables estáticas como el tipo de tienda y la ubicación (ciudad, estado) se transformaron mediante one-hot encoding, lo cual permite que el modelo las interprete de forma adecuada durante el entrenamiento.
 
-Esta preparación asegura que los datos de entrada estén limpios, consistentes y que todas las variables relevantes (pasadas, futuras y estáticas) se encuentren en un formato adecuado para el modelo de series de tiempo. Este enfoque estructurado permite al modelo capturar patrones complejos y mejorar su precisión predictiva en el conjunto de prueba.
+### Entrenamiento y Evaluación del Modelo (Training and Model Evaluation)
+
+En esta sección, se definieron y evaluaron diferentes configuraciones de parámetros para entrenar modelos de predicción de ventas utilizando `LightGBMModel`. A continuación, se describe el proceso detallado:
+
+- **Definición de Configuraciones de Parámetros**:
+   - Se establecieron varias combinaciones de parámetros de retrasos (**lags**) para series de tiempo objetivo, covariables futuras y covariables pasadas. Estas configuraciones permiten al modelo capturar patrones de diferentes períodos, desde semanales hasta anuales, considerando factores temporales de corto y largo plazo.
+
+   - Las configuraciones probadas incluyeron:
+     - Retrasos diarios de hasta 63 días.
+     - Uso de covariables futuras con retrasos de 14 a 16 días.
+     - Retrasos en covariables pasadas como transacciones históricas para capturar tendencias estacionales en las ventas.
+
+- **Entrenamiento del Modelo**:
+   - Para cada combinación de parámetros, se entrenó un modelo `LightGBMModel` específico para cada familia de productos.
+   - Durante el entrenamiento, se dividieron los datos en conjunto de entrenamiento y validación, asegurando que las predicciones se realizaran sobre datos de validación que el modelo no había visto previamente.
+   - Se utilizó la GPU para acelerar el proceso de entrenamiento, gracias a la implementación de `LightGBMModel` en `darts` que permite la ejecución en dispositivos compatibles.
+
+- **Predicciones y Evaluación de Resultados**:
+   - Una vez entrenados los modelos, se generaron predicciones para el período de validación (16 días). Las predicciones se almacenaron para cada configuración de parámetros y se realizaron transformaciones inversas para devolver los valores a su escala original.
+   - Las predicciones fueron ajustadas en casos donde las ventas pasadas recientes eran cero, para reflejar mejor la falta de actividad de ventas en dichos períodos.
+
+- **Promedio de Predicciones**:
+   - Para reducir la variabilidad de las predicciones individuales, se calculó el promedio de todas las predicciones generadas con distintas configuraciones de parámetros. Esta técnica de ensamblaje permitió mejorar la estabilidad y precisión de las predicciones finales.
+
+- **Visualización de Resultados**:
+   - Se graficaron las ventas reales y las predicciones para comparar visualmente el rendimiento del modelo en diferentes tiendas y familias de productos. La gráfica adjunta muestra las ventas reales (línea azul) y las predicciones de distintas configuraciones (líneas punteadas) para algunas tiendas y familias seleccionadas, permitiendo observar el ajuste de las predicciones a los patrones de ventas.
+   
+Esta etapa de entrenamiento y evaluación permitió identificar los mejores parámetros para el modelo, además de aplicar técnicas de ensamblaje para robustecer las predicciones finales, lo cual es fundamental en el contexto de predicción de ventas.
+
 
 
 
