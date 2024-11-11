@@ -3,7 +3,9 @@
 Este proyecto aborda el desafío propuesto por una competencia de Kaggle, donde se busca predecir las ventas de distintas familias de productos en múltiples tiendas de Favorita, una cadena ubicada en Ecuador. Utilizando técnicas de series de tiempo, el objetivo es desarrollar un modelo que permita estimar las ventas futuras a partir de datos históricos, lo cual es crucial para mejorar la planificación de inventarios, gestionar promociones y optimizar el suministro de productos.
 
 La solución incluye una serie de modelos predictivos que se entrenan con datos que incorporan factores como promociones, transacciones históricas, fluctuaciones de precios de petróleo y eventos especiales. Este enfoque permite capturar los patrones y tendencias en las ventas, ofreciendo una herramienta valiosa para la toma de decisiones en un entorno comercial dinámico.
-
+<p align="center">
+  <img src="Readme_images/Kaggle.png" alt="Imagen 2" width="700"/>
+</p>
 ## Data Cleaning
 
 En el proceso de limpieza de datos, se realizaron los siguientes pasos clave:
@@ -18,9 +20,31 @@ En el proceso de limpieza de datos, se realizaron los siguientes pasos clave:
 Durante la exploración de datos, se realizaron los siguientes análisis:
 
 - **Análisis Estadístico Descriptivo**: Se calculó el rango de fechas, el número de tiendas, familias de productos, y combinaciones únicas de tienda y producto, proporcionando una visión general de la estructura del conjunto de datos.
+<p align="center">
+  <img src="Readme_images/ventas_familia_productos.png" alt="Imagen 2" width="200"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
+  <img src="Readme_images/distribucion_tiendas.png" alt="Imagen 3" width="296"/>
+</p>
+  
 - **Visualización de Ventas a lo Largo del Tiempo**: Se generaron gráficos de líneas para visualizar tendencias generales y estacionalidad en las ventas de diferentes familias de productos y tiendas.
-- **Impacto de las Promociones en las Ventas**: Se exploró la relación entre las promociones (`onpromotion`) y las ventas, analizando cómo afectan las promociones al comportamiento de compra en distintas tiendas y productos.
-- **Efecto de Eventos y Festividades**: Se investigó la influencia de eventos especiales y festivos en los picos de ventas, identificando variaciones estacionales y patrones de consumo relacionados con estos eventos.
+ <p align="center">
+  <img src="Readme_images/ventas_años_separados.png" alt="Imagen 2" width="200"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
+  <img src="Readme_images/ventas_totales_mes_año.png" alt="Imagen 3" width="296"/>
+</p>
+
+- **Impacto de las Promociones y Pretróleo en las Ventas**: Se exploró la relación entre las promociones (`onpromotion`) y el precio del petróleo comparado con las ventas, analizando cómo afectan estas covariables al comportamiento de compra en distintas tiendas y productos.
+    <p align="center">
+  <img src="Readme_images/relacion_oil.png" alt="Imagen 2" width="200"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
+  <img src="Readme_images/relacion_onpromotion.png" alt="Imagen 3" width="296"/>
+</p>
+  
+- **Efecto de Eventos y Festividades**: Se investigó la influencia de eventos especiales y festivos en los picos de ventas, identificando variaciones estacionales y patrones de consumo relacionados con estos eventos. En este dataset hay una gran cantidad de festividades, incluirlas todas en las "features" del entrenamiento solo añadiría complejidad al entrenamiento sin aportar realmente un beneficio claro, por eso, gracias a este análisis se pueden incluir las festividades que tengan más repercusion en las ventas de las diferentes tiendas.
+
+  <p align="center">
+  <img src="Readme_images/impacto_festividades.png" alt="Imagen 2" width="700"/>
+</p>
 
 ## Training Preparation
 
@@ -95,6 +119,11 @@ Se graficaron las ventas reales y las predicciones para comparar el rendimiento 
 
 Esta etapa de entrenamiento y evaluación permitió identificar los mejores parámetros y robustecer las predicciones finales, esenciales para una predicción precisa en ventas.
 
+  <p align="center">
+  <img src="Readme_images/evaluation.png" alt="Imagen 2" width="700"/>
+</p>
+
+
 ## Final Training and Submission
 
 En la fase final de entrenamiento y generación de predicciones para la **submission**, se llevó a cabo un entrenamiento completo de los modelos utilizando todas las observaciones disponibles en el conjunto de datos y se generaron las predicciones necesarias para la competencia. El proceso incluyó configuraciones de parámetros optimizadas para cada modelo, asegurando una predicción precisa de las ventas.
@@ -122,3 +151,7 @@ En la fase final de entrenamiento y generación de predicciones para la **submis
 - **Exportación del Archivo**: El archivo resultante se guardó como `submission24.csv` y está listo para ser subido a Kaggle para la evaluación final.
 
 Este enfoque de ensamblaje y ajuste final asegura una predicción robusta, maximizando las probabilidades de obtener un buen rendimiento en la competencia.
+
+  <p align="center">
+  <img src="Readme_images/leaderboard.png" alt="Imagen 2" width="700"/>
+</p>
