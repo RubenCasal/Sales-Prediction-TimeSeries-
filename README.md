@@ -1,8 +1,8 @@
 # Sales Prediction with Time Series Analysis
 
-Este proyecto aborda el desafío propuesto por una competencia de Kaggle, donde se busca predecir las ventas de distintas familias de productos en múltiples tiendas de Favorita, una cadena ubicada en Ecuador. Utilizando técnicas de series de tiempo, el objetivo es desarrollar un modelo que permita estimar las ventas futuras a partir de datos históricos, lo cual es crucial para mejorar la planificación de inventarios, gestionar promociones y optimizar el suministro de productos.
+Este proyecto aborda el desafío de predecir las ventas de distintas familias de productos en múltiples tiendas de Favorita, una cadena en Ecuador, como parte de una competencia de Kaggle. Utilizando técnicas avanzadas de series de tiempo, el objetivo es construir un modelo que permita estimar las ventas futuras a partir de datos históricos, optimizando la planificación de inventarios y la gestión de promociones.
 
-La solución incluye una serie de modelos predictivos que se entrenan con datos que incorporan factores como promociones, transacciones históricas, fluctuaciones de precios de petróleo y eventos especiales. Este enfoque permite capturar los patrones y tendencias en las ventas, ofreciendo una herramienta valiosa para la toma de decisiones en un entorno comercial dinámico.
+La solución incluye un conjunto de modelos predictivos especializados, entrenados con datos enriquecidos que incorporan factores como promociones, transacciones históricas, precios del petróleo y eventos especiales. Se exploraron múltiples configuraciones de parámetros y se aplicaron técnicas de ensamblaje para lograr predicciones robustas. Este enfoque permitió capturar patrones clave en las ventas, alcanzando el puesto 30 de 773 en la competencia de Kaggle y demostrando su eficacia en un entorno de ventas dinámico.
 <p align="center">
   <img src="Readme_images/Kaggle.png" alt="Imagen 2" width="600"/>
 </p>
