@@ -95,7 +95,7 @@ Se graficaron las ventas reales y las predicciones para comparar el rendimiento 
 
 Esta etapa de entrenamiento y evaluación permitió identificar los mejores parámetros y robustecer las predicciones finales, esenciales para una predicción precisa en ventas.
 
-### Final Training and Submission
+## Final Training and Submission
 
 En la fase final de entrenamiento y generación de predicciones para la **submission**, se llevó a cabo un entrenamiento completo de los modelos utilizando todas las observaciones disponibles en el conjunto de datos y se generaron las predicciones necesarias para la competencia. El proceso incluyó configuraciones de parámetros optimizadas para cada modelo, asegurando una predicción precisa de las ventas.
 
