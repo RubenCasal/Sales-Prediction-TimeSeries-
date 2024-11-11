@@ -76,7 +76,7 @@ Las configuraciones específicas probadas fueron:
 
 ### Entrenamiento del Modelo
 
-- Para cada combinación de parámetros, se entrenó un modelo `LightGBMModel` específico para cada familia de productos.
+- Para cada combinación de parámetros, se entrenó un modelo `LightGBMModel` específico para cada familia de productos, para que cada modelo pueda especializarse en predecir un conjunto de datos que siga una dinámica similar y de esta forma conseguir predicciones más precisas (54 modelos en total).
 - Durante el entrenamiento, se dividieron los datos en conjunto de entrenamiento y validación, asegurando que las predicciones se realizaran sobre datos de validación no vistos.
 - Se utilizó la GPU para acelerar el proceso, gracias a la implementación de `LightGBMModel` en `darts`.
 
