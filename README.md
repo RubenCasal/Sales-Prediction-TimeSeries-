@@ -94,3 +94,31 @@ Para reducir la variabilidad, se calculó el promedio de todas las predicciones 
 Se graficaron las ventas reales y las predicciones para comparar el rendimiento en diferentes tiendas y familias. La gráfica muestra las ventas reales y las predicciones de varias configuraciones, observando el ajuste de las predicciones a los patrones de ventas.
 
 Esta etapa de entrenamiento y evaluación permitió identificar los mejores parámetros y robustecer las predicciones finales, esenciales para una predicción precisa en ventas.
+
+### Final Training and Submission
+
+En la fase final de entrenamiento y generación de predicciones para la **submission**, se llevó a cabo un entrenamiento completo de los modelos utilizando todas las observaciones disponibles en el conjunto de datos y se generaron las predicciones necesarias para la competencia. El proceso incluyó configuraciones de parámetros optimizadas para cada modelo, asegurando una predicción precisa de las ventas.
+
+#### Entrenamiento Final del Modelo
+
+- **Corte Temporal para Entrenamiento**: Se definió una fecha de corte (`cutoff_date`) para utilizar solo los datos relevantes en el entrenamiento, comenzando desde enero de 2015 en adelante.
+- **Entrenamiento por Familia de Productos**: Se entrenó un modelo `LightGBMModel` para cada familia de productos, utilizando las configuraciones de parámetros antes mencionadas y las covariables relevantes. Esto permitió que cada familia de productos tenga un modelo especializado adaptado a sus patrones de ventas.
+- **Almacenamiento de Modelos**: Cada modelo entrenado se almacenó en un diccionario estructurado por configuración de parámetros y familia de productos, facilitando la organización y posterior acceso para realizar predicciones.
+
+#### Generación de Predicciones para Submission
+
+- **Predicción con Todas las Configuraciones**: Se utilizaron los modelos entrenados para generar predicciones sobre el conjunto de prueba para cada configuración de parámetros. Estas predicciones se almacenaron y posteriormente se aplicaron transformaciones inversas para devolver los valores a su escala original.
+- **Ajustes para Ventas Nulas**: En los casos donde las ventas recientes en la serie de tiempo objetivo eran cero, se ajustaron las predicciones para reflejar mejor la falta de actividad en esos períodos, asignando predicciones cercanas a cero.
+
+#### Ensamblaje de Predicciones
+
+- **Promedio de Predicciones**: Se calculó el promedio de todas las predicciones generadas para cada configuración de parámetros, reduciendo la variabilidad y mejorando la estabilidad y precisión de la predicción final.
+- **Ajuste de Predicciones Negativas**: Para asegurar la coherencia de las predicciones, se eliminaron los valores negativos, estableciéndolos en cero donde fuera necesario.
+
+#### Preparación del Archivo para Submission
+
+- **Combinación de Predicciones**: Todas las predicciones se consolidaron en un único DataFrame, y el promedio de las predicciones se añadió como la columna `pred_sales_mean`.
+- **Formato para Submission**: Finalmente, el archivo de submission se generó utilizando la plantilla `sample_submission.csv`, donde la columna `sales` se llenó con las predicciones promediadas (`pred_sales_mean`).
+- **Exportación del Archivo**: El archivo resultante se guardó como `submission24.csv` y está listo para ser subido a Kaggle para la evaluación final.
+
+Este enfoque de ensamblaje y ajuste final asegura una predicción robusta, maximizando las probabilidades de obtener un buen rendimiento en la competencia.
