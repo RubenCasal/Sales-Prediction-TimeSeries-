@@ -4,8 +4,28 @@ Este proyecto aborda el desafío propuesto por una competencia de Kaggle, donde 
 
 La solución incluye una serie de modelos predictivos que se entrenan con datos que incorporan factores como promociones, transacciones históricas, fluctuaciones de precios de petróleo y eventos especiales. Este enfoque permite capturar los patrones y tendencias en las ventas, ofreciendo una herramienta valiosa para la toma de decisiones en un entorno comercial dinámico.
 <p align="center">
-  <img src="Readme_images/Kaggle.png" alt="Imagen 2" width="700"/>
+  <img src="Readme_images/Kaggle.png" alt="Imagen 2" width="600"/>
 </p>
+## Índice
+
+1. [Data Cleaning](#data-cleaning)
+2. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+3. [Training Preparation](#training-preparation)
+    - [Creación de Series de Tiempo Objetivo y Covariables](#creación-de-series-de-tiempo-objetivo-y-covariables)
+    - [Generación de Covariables de Promociones y Festividades](#generación-de-covariables-de-promociones-y-festividades)
+    - [Construcción de Pipelines de Transformación](#construcción-de-pipelines-de-transformación)
+4. [Training and Evaluation](#training-and-evaluation)
+    - [Configuración del Modelo](#configuración-del-modelo)
+    - [Entrenamiento del Modelo](#entrenamiento-del-modelo)
+    - [Predicciones y Evaluación de Resultados](#predicciones-y-evaluación-de-resultados)
+    - [Promedio de Predicciones](#promedio-de-predicciones)
+    - [Visualización de Resultados](#visualización-de-resultados)
+5. [Final Training and Submission](#final-training-and-submission)
+    - [Entrenamiento Final del Modelo](#entrenamiento-final-del-modelo)
+    - [Generación de Predicciones para Submission](#generación-de-predicciones-para-submission)
+    - [Ensamblaje de Predicciones](#ensamblaje-de-predicciones)
+    - [Preparación del Archivo para Submission](#preparación-del-archivo-para-submission)
+   
 ## Data Cleaning
 
 En el proceso de limpieza de datos, se realizaron los siguientes pasos clave:
@@ -21,29 +41,29 @@ Durante la exploración de datos, se realizaron los siguientes análisis:
 
 - **Análisis Estadístico Descriptivo**: Se calculó el rango de fechas, el número de tiendas, familias de productos, y combinaciones únicas de tienda y producto, proporcionando una visión general de la estructura del conjunto de datos.
 <p align="center">
-  <img src="Readme_images/ventas_familia_productos.png" alt="Imagen 2" width="200"/>
+  <img src="Readme_images/ventas_familia_productos.png" alt="Imagen 2" width="450"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
-  <img src="Readme_images/distribucion_tiendas.png" alt="Imagen 3" width="296"/>
+  <img src="Readme_images/distribucion_tiendas.png" alt="Imagen 3" width="450"/>
 </p>
   
 - **Visualización de Ventas a lo Largo del Tiempo**: Se generaron gráficos de líneas para visualizar tendencias generales y estacionalidad en las ventas de diferentes familias de productos y tiendas.
  <p align="center">
-  <img src="Readme_images/ventas_años_separados.png" alt="Imagen 2" width="200"/>
+  <img src="Readme_images/ventas_años_separados.png" alt="Imagen 2" width="450"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
-  <img src="Readme_images/ventas_totales_mes_año.png" alt="Imagen 3" width="296"/>
+  <img src="Readme_images/ventas_totales_mes_año.png" alt="Imagen 3" width="450"/>
 </p>
 
 - **Impacto de las Promociones y Pretróleo en las Ventas**: Se exploró la relación entre las promociones (`onpromotion`) y el precio del petróleo comparado con las ventas, analizando cómo afectan estas covariables al comportamiento de compra en distintas tiendas y productos.
     <p align="center">
-  <img src="Readme_images/relacion_oil.png" alt="Imagen 2" width="200"/>
+  <img src="Readme_images/relacion_oil.png" alt="Imagen 2" width="450"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
-  <img src="Readme_images/relacion_onpromotion.png" alt="Imagen 3" width="296"/>
+  <img src="Readme_images/relacion_onpromotion.png" alt="Imagen 3" width="450"/>
 </p>
   
 - **Efecto de Eventos y Festividades**: Se investigó la influencia de eventos especiales y festivos en los picos de ventas, identificando variaciones estacionales y patrones de consumo relacionados con estos eventos. En este dataset hay una gran cantidad de festividades, incluirlas todas en las "features" del entrenamiento solo añadiría complejidad al entrenamiento sin aportar realmente un beneficio claro, por eso, gracias a este análisis se pueden incluir las festividades que tengan más repercusion en las ventas de las diferentes tiendas.
 
   <p align="center">
-  <img src="Readme_images/impacto_festividades.png" alt="Imagen 2" width="700"/>
+  <img src="Readme_images/impacto_festividades.png" alt="Imagen 2" width="900"/>
 </p>
 
 ## Training Preparation
@@ -120,7 +140,7 @@ Se graficaron las ventas reales y las predicciones para comparar el rendimiento 
 Esta etapa de entrenamiento y evaluación permitió identificar los mejores parámetros y robustecer las predicciones finales, esenciales para una predicción precisa en ventas.
 
   <p align="center">
-  <img src="Readme_images/evaluation.png" alt="Imagen 2" width="700"/>
+  <img src="Readme_images/evaluation.png" alt="Imagen 2" width="850"/>
 </p>
 
 
@@ -150,8 +170,8 @@ En la fase final de entrenamiento y generación de predicciones para la **submis
 - **Formato para Submission**: Finalmente, el archivo de submission se generó utilizando la plantilla `sample_submission.csv`, donde la columna `sales` se llenó con las predicciones promediadas (`pred_sales_mean`).
 - **Exportación del Archivo**: El archivo resultante se guardó como `submission24.csv` y está listo para ser subido a Kaggle para la evaluación final.
 
-Este enfoque de ensamblaje y ajuste final asegura una predicción robusta, maximizando las probabilidades de obtener un buen rendimiento en la competencia.
+Este enfoque de ensamblaje y ajuste final asegura una predicción robusta, consiguiendo una posicion 30/773 en la competencia de Kaggle.
 
   <p align="center">
-  <img src="Readme_images/leaderboard.png" alt="Imagen 2" width="700"/>
+  <img src="Readme_images/leaderboard.png" alt="Imagen 2" width="800"/>
 </p>
