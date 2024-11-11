@@ -6,6 +6,7 @@ La solución incluye una serie de modelos predictivos que se entrenan con datos 
 <p align="center">
   <img src="Readme_images/Kaggle.png" alt="Imagen 2" width="600"/>
 </p>
+
 ## Índice
 
 1. [Data Cleaning](#data-cleaning)
