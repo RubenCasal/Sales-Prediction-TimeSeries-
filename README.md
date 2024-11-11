@@ -44,17 +44,34 @@ Antes de entrenar el modelo, se llevó a cabo una preparación exhaustiva de los
       - **Escalado de Datos**: Se normalizan las series de tiempo con `Scaler` para asegurar que las variables tengan una escala consistente, mejorando la estabilidad y el rendimiento del modelo.
       - **Codificación de Covariables Estáticas**: Las covariables estáticas como el tipo de tienda y la ubicación (ciudad, estado) se transformaron mediante one-hot encoding, lo cual permite que el modelo las interprete de forma adecuada durante el entrenamiento.
 
-### Entrenamiento y Evaluación del Modelo (Training and Model Evaluation)
+### Definición de Configuraciones de Parámetros
 
-En esta sección, se definieron y evaluaron diferentes configuraciones de parámetros para entrenar modelos de predicción de ventas utilizando `LightGBMModel`. A continuación, se describe el proceso detallado:
+Se establecieron varias combinaciones de parámetros de retrasos (**lags**) para series de tiempo objetivo, covariables futuras y covariables pasadas. Estas configuraciones permiten al modelo capturar patrones de diferentes períodos, desde semanales hasta anuales, considerando factores temporales de corto y largo plazo.
 
-- **Definición de Configuraciones de Parámetros**:
-   - Se establecieron varias combinaciones de parámetros de retrasos (**lags**) para series de tiempo objetivo, covariables futuras y covariables pasadas. Estas configuraciones permiten al modelo capturar patrones de diferentes períodos, desde semanales hasta anuales, considerando factores temporales de corto y largo plazo.
+Las configuraciones específicas probadas fueron:
 
-   - Las configuraciones probadas incluyeron:
-     - Retrasos diarios de hasta 63 días.
-     - Uso de covariables futuras con retrasos de 14 a 16 días.
-     - Retrasos en covariables pasadas como transacciones históricas para capturar tendencias estacionales en las ventas.
+1. **Configuración 1**:
+   - `lags`: 63 (retrasos de hasta 63 días para la serie de ventas)
+   - `lags_future_covariates`: (14, 1) (covariables futuras con retrasos de 14 días y ventana de 1 día)
+   - `lags_past_covariates`: [-16, -17, -18, -19, -20, -21, -22] (covariables pasadas como transacciones históricas, capturando retrasos de 16 a 22 días)
+
+2. **Configuración 2**:
+   - `lags`: 7 (retrasos de hasta 7 días para la serie de ventas)
+   - `lags_future_covariates`: (16, 1) (covariables futuras con retrasos de 16 días y ventana de 1 día)
+   - `lags_past_covariates`: [-16, -17, -18, -19, -20, -21, -22]
+
+3. **Configuración 3**:
+   - `lags`: 365 (retrasos de hasta 365 días para la serie de ventas, considerando patrones anuales)
+   - `lags_future_covariates`: (14, 1)
+   - `lags_past_covariates`: [-16, -17, -18, -19, -20, -21, -22]
+
+4. **Configuración 4**:
+   - `lags`: 730 (retrasos de hasta 730 días para la serie de ventas, capturando patrones bienales)
+   - `lags_future_covariates`: (14, 1)
+   - `lags_past_covariates`: [-16, -17, -18, -19, -20, -21, -22]
+
+Estas configuraciones permitieron explorar la sensibilidad del modelo a diferentes horizontes temporales, tanto en términos de patrones recientes (semanales y mensuales) como de patrones de más largo plazo (anuales y bienales).
+
 
 - **Entrenamiento del Modelo**:
    - Para cada combinación de parámetros, se entrenó un modelo `LightGBMModel` específico para cada familia de productos.
