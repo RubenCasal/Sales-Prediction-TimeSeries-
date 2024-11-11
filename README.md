@@ -4,7 +4,7 @@ Este proyecto aborda el desafío propuesto por una competencia de Kaggle, donde 
 
 La solución incluye una serie de modelos predictivos que se entrenan con datos que incorporan factores como promociones, transacciones históricas, fluctuaciones de precios de petróleo y eventos especiales. Este enfoque permite capturar los patrones y tendencias en las ventas, ofreciendo una herramienta valiosa para la toma de decisiones en un entorno comercial dinámico.
 
-### Limpieza de Datos
+### Data Cleaning
 
 En el proceso de limpieza de datos, se realizaron los siguientes pasos clave:
 
@@ -14,6 +14,14 @@ En el proceso de limpieza de datos, se realizaron los siguientes pasos clave:
 - **Generación de Nuevas Características **: Se crearon nuevas variables temporales, como días festivos y atributos de tendencia estacional, para enriquecer los datos y capturar patrones estacionales en las ventas.
 
 
+### Exploratory Data Analysis (EDA)
+
+Durante la exploración de datos, se realizaron los siguientes análisis:
+
+- **Análisis Estadístico Descriptivo**: Se calculó el rango de fechas, el número de tiendas, familias de productos, y combinaciones únicas de tienda y producto, proporcionando una visión general de la estructura del conjunto de datos.
+- **Visualización de Ventas a lo Largo del Tiempo**: Se generaron gráficos de líneas para visualizar tendencias generales y estacionalidad en las ventas de diferentes familias de productos y tiendas.
+- **Impacto de las Promociones en las Ventas**: Se exploró la relación entre las promociones (`onpromotion`) y las ventas, analizando cómo afectan las promociones al comportamiento de compra en distintas tiendas y productos.
+- **Efecto de Eventos y Festividades**: Se investigó la influencia de eventos especiales y festivos en los picos de ventas, identificando variaciones estacionales y patrones de consumo relacionados con estos eventos.
 
 
 
