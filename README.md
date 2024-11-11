@@ -42,23 +42,23 @@ Durante la exploración de datos, se realizaron los siguientes análisis:
 
 - **Análisis Estadístico Descriptivo**: Se calculó el rango de fechas, el número de tiendas, familias de productos, y combinaciones únicas de tienda y producto, proporcionando una visión general de la estructura del conjunto de datos.
 <p align="center">
-  <img src="Readme_images/ventas_familia_productos.png" alt="Imagen 2" width="450"/>
+  <img src="Readme_images/ventas_familia_productos.png" alt="Imagen 2" width="425"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
-  <img src="Readme_images/distribucion_tiendas.png" alt="Imagen 3" width="450"/>
+  <img src="Readme_images/distribucion_tiendas.png" alt="Imagen 3" width="425"/>
 </p>
   
 - **Visualización de Ventas a lo Largo del Tiempo**: Se generaron gráficos de líneas para visualizar tendencias generales y estacionalidad en las ventas de diferentes familias de productos y tiendas.
  <p align="center">
-  <img src="Readme_images/ventas_años_separados.png" alt="Imagen 2" width="450"/>
+  <img src="Readme_images/ventas_años_separados.png" alt="Imagen 2" width="425"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
-  <img src="Readme_images/ventas_totales_mes_año.png" alt="Imagen 3" width="450"/>
+  <img src="Readme_images/ventas_totales_mes_año.png" alt="Imagen 3" width="425"/>
 </p>
 
 - **Impacto de las Promociones y Pretróleo en las Ventas**: Se exploró la relación entre las promociones (`onpromotion`) y el precio del petróleo comparado con las ventas, analizando cómo afectan estas covariables al comportamiento de compra en distintas tiendas y productos.
     <p align="center">
-  <img src="Readme_images/relacion_oil.png" alt="Imagen 2" width="450"/>
+  <img src="Readme_images/relacion_oil.png" alt="Imagen 2" width="425"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Ajusta la cantidad de espacios para simular el margen -->
-  <img src="Readme_images/relacion_onpromotion.png" alt="Imagen 3" width="450"/>
+  <img src="Readme_images/relacion_onpromotion.png" alt="Imagen 3" width="425"/>
 </p>
   
 - **Efecto de Eventos y Festividades**: Se investigó la influencia de eventos especiales y festivos en los picos de ventas, identificando variaciones estacionales y patrones de consumo relacionados con estos eventos. En este dataset hay una gran cantidad de festividades, incluirlas todas en las "features" del entrenamiento solo añadiría complejidad al entrenamiento sin aportar realmente un beneficio claro, por eso, gracias a este análisis se pueden incluir las festividades que tengan más repercusion en las ventas de las diferentes tiendas.
